@@ -17,7 +17,7 @@ export function App() {
   const websiteWidth = useSignal<number | null>(600);
 
   return (
-    <div class="flex flex-col w-screen h-screen dark:text-white dark:bg-black">
+    <div class="flex flex-col w-screen h-screen text-black bg-white">
       <div class="flex flex-grow-[1]">
         {sidebarWidth.value !== null && (
           <div

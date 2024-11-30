@@ -1,6 +1,7 @@
 import { DenoBox } from "../../src/mod.ts";
 
 export const box = new DenoBox();
+console.log(box)
 
 box.fs.writeFile(
   "hello.ts",
@@ -9,6 +10,10 @@ box.fs.writeFile(
 box.fs.writeFile(
   "hello2.ts",
   new TextEncoder().encode("console.log('Hello world 2!');"),
+);
+box.fs.writeFile(
+  "hello3.ts",
+  new TextEncoder().encode("Deno.serve(() => {return 'Hell'});"),
 );
 box.fs.writeFile(
   "real.ts",

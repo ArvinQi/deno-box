@@ -1,7 +1,19 @@
 const bc = new BroadcastChannel("box_sw_network_request");
-
+self.addEventListener('install', function (event) {
+  // 在这里进行缓存资源等安装操作
+  // event.waitUntil(
+  //     caches.open('my-cache-v1').then(function (cache) {
+  //         return cache.addAll([
+  //             // 这里列出需要缓存的文件路径，如 '/index.html', '/styles.css'等
+  //         ]);
+  //     })
+  // );
+  // 跳过等待阶段，立即激活
+  self.skipWaiting();
+});
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
+  console.log('sw',url.pathname);
   if (url.pathname.startsWith("/_boxsw/")) {
     // wait until response back
     event.respondWith(

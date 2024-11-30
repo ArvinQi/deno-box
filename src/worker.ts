@@ -57,20 +57,19 @@ export class DenoWorker {
                 headers: reqPayload.headers,
                 body: reqPayload.body,
               }));
+              __print("Response", res)
               bc.postMessage({
                 id: e.data.id,
                 type: "response",
                 data: {
-                  body: await res.arrayBuffer(),
+                  body: res,
                   status: res.status,
                   statusText: res.statusText,
-                  headers: {... res.headers.entries() },
+                  // headers: {... res.headers.entries() },
                 }
               });
             }
-          });
-        }
-      };
+          })};
 
       console.log = (...args) => {
         self.postMessage({
